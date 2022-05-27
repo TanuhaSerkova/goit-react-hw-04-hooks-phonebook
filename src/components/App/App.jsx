@@ -12,6 +12,7 @@ export function App() {
         { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ]);
+    
     const [filter, setFilter] = useState('');
 
     // проверка localStorage на наличие контактов
@@ -19,11 +20,7 @@ export function App() {
         const contactsStorage = localStorage.getItem('contacts');
         const parcedContacts = JSON.parse(contactsStorage);
 
-        if (parcedContacts) {
-            setContacts(parcedContacts);
-        } else {
-            return;
-        }
+        parcedContacts ? setContacts(parcedContacts) : setContacts([]);
     }, []);
     
     // запись контакта в localStorage
